@@ -31,6 +31,8 @@
 *.out
 *.app
 
+bin/
+
 # Data
 *.dat
 
