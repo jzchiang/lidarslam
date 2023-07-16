@@ -31,7 +31,9 @@
 *.out
 *.app
 
+# Project-specific
 bin/
+*.orig
 
 # Data
 *.dat
