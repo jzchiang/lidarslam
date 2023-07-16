@@ -4,9 +4,9 @@
 #include <iostream>
 
 namespace lidarslam {
-	void print_test() {
-		std::cout << "Print Test" << std::endl;
-	}
+void print_test() {
+    std::cout << "Print Test" << std::endl;
+}
 }
 
 #endif

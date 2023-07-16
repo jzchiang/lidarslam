@@ -1,23 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "real_map.h"
 #include "main.h"
 
-class ElevationMap {
-public:
-    ElevationMap() {}
-    ElevationMap(const std::vector< std::vector< float > >& x,
-                 const std::vector< std::vector< float > >& y,
-                 const std::vector< std::vector< float > >& z
-                ) : x_(x), y_(y), z_(z) {
-    }
-
-private:
-    std::vector< std::vector< float > > x_;
-    std::vector< std::vector< float > > y_;
-    std::vector< std::vector< float > > z_;
-};
-
+namespace lidarslam {
 ElevationMap read_map(const std::string& filename) {
     std::ifstream ifs;
     int m, n;
@@ -38,9 +25,11 @@ ElevationMap read_map(const std::string& filename) {
     ElevationMap elevation_map(x, y, z);
     return elevation_map;
 }
+}
 
 using namespace std;
 int main(int argc, char* argv[]) {
-    ElevationMap elevation_map = read_map("dat/map.dat");
+    lidarslam::ElevationMap elevation_map = lidarslam::read_map("dat/map.dat");
+    elevation_map.print();
     return 0;
 }
