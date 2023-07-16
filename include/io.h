@@ -7,9 +7,9 @@
 
 namespace lidarslam {
 ElevationMap read_map(const std::string& filename) {
-	/*
-	 * This function reads data from a .dat file to populate an ElevationMap object
-	 */
+    /*
+     * This function reads data from a .dat file to populate an ElevationMap object
+     */
     std::ifstream ifs;
     int m, n;
     ifs.open(filename, std::ifstream::in);
