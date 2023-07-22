@@ -17,14 +17,17 @@ ElevationMap::operator()(const float x, const float y) const {
         std::lower_bound(
             x_.at(0).begin(), x_.at(0).end(), x
         ) - x_.at(0).begin();
-    std::cout << ix << std::endl;
+    float xi = (x - x_.at(0)[ix])/(x_.at(0)[ix+1] - x_.at(0)[ix]);
     size_t iy =
         std::lower_bound(
     y_.begin(), y_.end(), y, [](auto a, auto b) {
         return a.at(0) < b;
     }
         ) - y_.begin();
-    std::cout << iy << std::endl;
-    return z_[iy][ix];
+    float eta = (y - y_[iy].at(0))/(y_[iy+1].at(0) - y_[iy].at(0));
+    return (1.-xi)*(1.-eta)*z_[iy][ix] +
+           (1.-xi)*eta*z_[iy+1][ix] +
+           xi*(1.-eta)*z_[iy][ix+1] +
+           xi*eta*z_[iy+1][ix+1];
 }
 }
